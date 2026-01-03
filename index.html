@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Aulia!</title>
+    <!-- Link ke Font Awesome untuk icon menarik -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef, #ffecd2);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            animation: backgroundShift 10s infinite alternate;
+        }
+        
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, #ff9a9e, #fecfef, #ffecd2); }
+            100% { background: linear-gradient(135deg, #a8edea, #fed6e3, #d299c2); }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            font-size: 3em;
+            color: #ff6b6b;
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .photo {
+            margin: 20px 0;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 5px solid #ff6b6b;
+            animation: bounce 3s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .message {
+            font-size: 1.5em;
+            margin: 20px 0;
+            animation: fadeIn 3s ease-in-out 1s both;
+        }
+        
+        .icon {
+            font-size: 1.5em;
+            margin: 0 5px;
+            color: #ff6b6b;
+        }
+        
+        button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #ff5252;
+        }
+        
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            animation: fall 5s linear infinite;
+        }
+        
+        @keyframes fall {
+            to { transform: translateY(100vh); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-birthday-cake icon"></i> Happy 19th Birthday, Aulia Annisa Rahma! <i class="fas fa-gift icon"></i></h1>
+        <img id="birthday-photo" class="photo" src="WhatsApp Image 2026-01-03 at 20.00.09.jpeg" alt="Foto Aulia Annisa Rahma">
+        <div class="message">
+            <p><i class="fas fa-heart icon"></i> Dari Arum, dengan penuh cinta dan harapan: <i class="fas fa-heart icon"></i></p>
+            <p><i class="fas fa-birthday-cake icon"></i> Selamat ulang tahun yang ke-19, Aulia! <i class="fas fa-birthday-cake icon"></i> Semoga tahun ini penuh kebahagiaan, kesehatan, dan impian yang tercapai. Kamu adalah 
+                teman aku untuk pergi kesekolah bareng,jajan bareng,dan kamu teman untuk aku bershareing tugas. Love you!!.... my best go to school <i class="fas fa-gift icon"></i><i class="fas fa-birthday-cake icon"></i></p>
+        </div>
+        <button id="play-music"><i class="fas fa-music icon"></i> Putar Musik Ulang Tahun <i class="fas fa-music icon"></i></button>
+        <audio id="birthday-song" src="Jamrud_-_Selamat_Ulang_Tahun_(mp3.pm).mp3" preload="auto"></audio>
+    </div>
+    
+    <div class="confetti" id="confetti-container"></div>
+    
+    <script>
+        // Animasi confetti
+        function createConfetti() {
+            const container = document.getElementById('confetti-container');
+            for (let i = 0; i < 50; i++) {
+                const piece = document.createElement('div');
+                piece.classList.add('confetti-piece');
+                piece.style.left = Math.random() * 100 + '%';
+                piece.style.animationDelay = Math.random() * 5 + 's';
+                piece.style.background = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24'][Math.floor(Math.random() * 4)];
+                container.appendChild(piece);
+            }
+        }
+        
+        // Kontrol musik
+        const playButton = document.getElementById('play-music');
+        const audio = document.getElementById('birthday-song');
+        
+        playButton.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playButton.innerHTML = '<i class="fas fa-music icon"></i> Pause Musik <i class="fas fa-music icon"></i>';
+            } else {
+                audio.pause();
+                playButton.innerHTML = '<i class="fas fa-music icon"></i> Putar Musik Ulang Tahun <i class="fas fa-music icon"></i>';
+            }
+        });
+        
+        // Jalankan animasi saat halaman load
+        window.onload = () => {
+            createConfetti();
+        };
+    </script>
+</body>
+</html>
